@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+     
+    {% block title %}{{task.title}}{% endblock %}
+     
+    {% block content %}
+    <article>
+        <header>
+            <h1> {{task.title}} </h1>
+            <p>
+                Posted on
+                <time datetime="{{task.created|date:"c"}}">
+                {{task.created|date}}
+                </time>
+            </p>
+        </header>
+        <p class="description">
+            {{task.description}}
+        </p>
+        {{task.content|safe}}
+    </article>
+    {% endblock %}

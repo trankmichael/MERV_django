@@ -1,0 +1,15 @@
+from django.shortcuts import render,get_object_or_404
+from recommender.models import Task
+
+def index(request):
+#get the recommender tasks that have been published
+	tasks = Task.objects.filter(published=True)
+	#now return the rendered template
+	return render(request, 'recommender/index.html',{'tasks':tasks})
+
+def post(request,slug):
+	# get the Task object
+	task = get_object_or_404(Task, slug=slug)
+	# now return the rendered template
+	return render(request, 'recommender/task.html',{'task':task})
+

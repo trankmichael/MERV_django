@@ -1,0 +1,25 @@
+  {% extends 'base.html' %}
+     
+     
+    {% block title %} Task Archive {% endblock %}
+     
+    {% block content %}
+        <h1> My Task Archive </h1>
+        {% for task in tasks %}
+        <div class="task">
+            <h2>
+                <a href="{{task.get_absolute_url}}">
+                    {{task.title}}
+                </a>
+            </h2>
+            <p>{{task.description}}</p>
+            <p>
+                Posted on
+                <time datetime="{{task.created|date:"c"}}">
+                {{task.created|date}}
+                </time>
+            </p>
+        </div>
+   </form>
+        {% endfor %}
+    {% endblock %}
